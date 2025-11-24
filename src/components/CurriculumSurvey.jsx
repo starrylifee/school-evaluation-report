@@ -272,7 +272,7 @@ const rawSurveyData = [
   },
   {
     id: 17,
-    question: '2025학년도 자율휴업일 선호도 조사',
+    question: '2026학년도 자율휴업일 선호도 조사',
     description: '5월 1일(근로자의 날) 외 추가 2일 선택. 상단의 그룹 버튼을 클릭하여 정렬할 수 있습니다.',
     targets: ['교사', '직원', '학부모'],
     isMultiSeries: true,

@@ -202,17 +202,29 @@ const DATASET = [
         indicators: [
           {
             id: 20,
-            title: '협력적 통합교육 / 교육복지 / 기초학력',
-            analysis:
-              "학부모는 '통합교육'에 대해 88.1%로 매우 높게 만족하지만, '기초학력'은 83.0%로 상대적으로 낮습니다.",
+            title: '협력적 통합교육',
+            analysis: "학부모는 '통합교육'에 대해 88.1%로 매우 높게 만족하고 있습니다.",
             stats: {
               teacher: [100, 0, 0, 0, 0],
-              // Special case: multiple parent datasets
-              parent_multi: [
-                { label: '학부모 (통합교육)', data: [39.5, 48.6, 10.7, 0.6, 0.6] },
-                { label: '학부모 (교육복지)', data: [39.0, 45.8, 15.3, 1.1, 0.6] },
-                { label: '학부모 (기초학력)', data: [39.5, 43.5, 15.3, 1.1, 0.6] },
-              ],
+              parent: [39.5, 48.6, 10.7, 0.6, 0.6],
+            },
+          },
+          {
+            id: 201,
+            title: '교육복지',
+            analysis: "학부모는 '교육복지'에 대해 84.8%의 만족도를 보이고 있습니다.",
+            stats: {
+              teacher: [100, 0, 0, 0, 0],
+              parent: [39.0, 45.8, 15.3, 1.1, 0.6],
+            },
+          },
+          {
+            id: 202,
+            title: '기초학력',
+            analysis: "학부모는 '기초학력'에 대해 83.0%의 만족도를 보이고 있습니다.",
+            stats: {
+              teacher: [100, 0, 0, 0, 0],
+              parent: [39.5, 43.5, 15.3, 1.1, 0.6],
             },
           },
           {
@@ -449,7 +461,7 @@ const CustomPieChart = ({ data }) => {
   const innerCircle = <circle cx="50" cy="50" r="30" fill="white" />;
   const satisfactionSum = (data[0] + data[1]).toFixed(1);
   return (
-    <div className="relative w-40 h-40 mx-auto">
+    <div className="relative w-full aspect-square max-w-[180px] mx-auto">
       <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-0">
         {slices}
         {innerCircle}
@@ -493,9 +505,11 @@ const RespondentCard = ({ role, data, titleOverride }) => {
     );
   }
   return (
-    <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex flex-col items-center h-full justify-between">
+    <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex flex-col items-center h-full min-h-[320px] justify-between">
       <h4 className="font-semibold text-gray-700 mb-4">{title}</h4>
-      <CustomPieChart data={data} />
+      <div className="flex-1 flex items-center justify-center w-full">
+        <CustomPieChart data={data} />
+      </div>
       <div className="w-full mt-4 text-center text-xs text-gray-400"> 긍정 평가 합계</div>
     </div>
   );
@@ -567,7 +581,7 @@ const SchoolEvaluation = () => {
     }
     const { title, analysis, stats } = activeIndicator;
     return (
-      <div className="max-w-6xl mx-auto animate-fade-in p-4 pb-20">
+      <div className="max-w-[1600px] mx-auto animate-fade-in p-4 pb-20">
         <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 flex items-start leading-snug">
           <span className="bg-blue-600 text-white text-sm py-1 px-3 rounded-full mr-3 mt-1 flex-shrink-0">지표</span>
           {title}
