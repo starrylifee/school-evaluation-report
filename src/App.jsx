@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react';
 import SchoolEvaluation from './components/SchoolEvaluation';
 import CurriculumSurvey from './components/CurriculumSurvey';
 import StudentInsights from './components/StudentInsights';
+import DepartmentDiscussion from './components/DepartmentDiscussion';
+import GradeConsultation from './components/GradeConsultation';
 import ComingSoon from './components/ComingSoon';
 
 const SECTIONS = [
@@ -29,27 +31,15 @@ const SECTIONS = [
   {
     id: 'department',
     label: '부서별 협의자료',
-    sub: '2025 협의안 탑재 예정',
-    component: () => (
-      <ComingSoon
-        title="부서별 협의자료 업로드 준비 중"
-        description="각 부서의 개선 안건, 실행 로드맵, 증빙자료를 정리하여 공개할 예정입니다. 확정본 전달 즉시 반영됩니다."
-        checklist={['부서별 핵심 과제 정리', '월별 실행 일정 수립', '지표별 증빙자료 첨부']}
-      />
-    ),
+    sub: '2025 협의안 탑재 완료',
+    component: DepartmentDiscussion,
     accent: 'bg-amber-500/10 text-amber-700 border border-amber-200',
   },
   {
     id: 'grade',
     label: '학년별 협의자료',
-    sub: '학년군별 실행계획 탑재 예정',
-    component: () => (
-      <ComingSoon
-        title="학년별 협의자료 곧 공개"
-        description="학년군 맞춤 실행전략, 수업 나눔 자료, 학부모 안내 초안 등을 순차적으로 업로드할 계획입니다."
-        checklist={['학년별 실행 아젠다 취합', '협의록 요약본 정리', '학생·학부모 커뮤니케이션 초안 제작']}
-      />
-    ),
+    sub: '학년군별 실행계획 및 논의 안건',
+    component: GradeConsultation,
     accent: 'bg-slate-500/10 text-slate-700 border border-slate-200',
   },
 ];
