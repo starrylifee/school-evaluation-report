@@ -245,18 +245,18 @@ const rawSurveyData = [
     targets: ['교사', '학부모', '학생'],
     isMultiSeries: true,
     subGroups: ['교원', '학부모', '학생'],
-    totalVotesByGroup: { 교원: 64, 학부모: 162, 학생: 365 },
+    totalVotesByGroup: { 교원: 100, 학부모: 100, 학생: 100 },
     options: [
-      { label: '문화예술', counts: { 교원: 13, 학부모: 20, 학생: 62 } },
-      { label: '독서인문', counts: { 교원: 16, 학부모: 32, 학생: 33 } },
-      { label: '진로', counts: { 교원: 4, 학부모: 21, 학생: 87 } },
-      { label: '기초소양', counts: { 교원: 3, 학부모: 10, 학생: 5 } },
-      { label: '인성', counts: { 교원: 7, 학부모: 20, 학생: 52 } },
-      { label: '민주시민', counts: { 교원: 2, 학부모: 2, 학생: 6 } },
-      { label: '디지털 AI', counts: { 교원: 15, 학부모: 37, 학생: 68 } },
-      { label: '세계 시민', counts: { 교원: 2, 학부모: 2, 학생: 15 } },
-      { label: '생태전환', counts: { 교원: 0, 학부모: 4, 학생: 8 } },
-      { label: '토의 토론', counts: { 교원: 2, 학부모: 14, 학생: 29 } },
+      { label: '문화예술', counts: { 교원: 38.2, 학부모: 22.0, 학생: 26.3 } },
+      { label: '독서인문', counts: { 교원: 47.1, 학부모: 35.2, 학생: 14.0 } },
+      { label: '진로', counts: { 교원: 11.8, 학부모: 23.1, 학생: 36.9 } },
+      { label: '기초소양', counts: { 교원: 8.8, 학부모: 11.0, 학생: 2.1 } },
+      { label: '인성', counts: { 교원: 20.6, 학부모: 22.0, 학생: 22.0 } },
+      { label: '민주시민', counts: { 교원: 5.9, 학부모: 2.2, 학생: 2.5 } },
+      { label: '디지털 AI', counts: { 교원: 44.1, 학부모: 40.7, 학생: 28.8 } },
+      { label: '생태전환', counts: { 교원: 0, 학부모: 4.4, 학생: 3.4 } },
+      { label: '토의 토론', counts: { 교원: 5.9, 학부모: 15.4, 학생: 12.3 } },
+      { label: '세계시민', counts: { 교원: 0, 학부모: 2.2, 학생: 6.4 } },
     ],
   },
   {
@@ -277,7 +277,7 @@ const rawSurveyData = [
     targets: ['교사', '직원', '학부모'],
     isMultiSeries: true,
     subGroups: ['교원', '직원', '학부모'],
-    totalVotesByGroup: { 교원: 66, 직원: 18, 학부모: 305 },
+    totalVotesByGroup: { 교원: 34, 직원: 10, 학부모: 177 },
     options: [
       { label: '(1학기) 4. 17.(금) - 3일 연휴', counts: { 교원: 2, 직원: 3, 학부모: 43 } },
       { label: '(1학기) 5. 4.(월) - 5일 연휴', counts: { 교원: 30, 직원: 6, 학부모: 97 } },
@@ -829,7 +829,7 @@ const CurriculumSurvey = () => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 rounded-xl shadow-md text-white flex justify-between items-center cursor-pointer hover:shadow-lg transition-all">
+                {/* <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-6 rounded-xl shadow-md text-white flex justify-between items-center cursor-pointer hover:shadow-lg transition-all">
                   <div>
                     <span className="text-indigo-100 text-sm font-medium">관리자 옵션</span>
                     <p className="font-bold text-lg mt-0.5">결과 리포트 다운로드</p>
@@ -837,7 +837,7 @@ const CurriculumSurvey = () => {
                   <div className="bg-white/20 p-2 rounded-full">
                     <ChevronRight size={20} />
                   </div>
-                </div>
+                </div> */}
               </div>
             )}
           </div>
