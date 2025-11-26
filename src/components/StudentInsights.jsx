@@ -594,13 +594,13 @@ const StudentInsights = () => {
 
         {/* 3. 가정 학습 조력 */}
         <InsightCard title="가정 학습 조력 정도" icon={Heart}>
-          <div className="relative h-full">
-            <ResponsiveContainer width="100%" height={250}>
+          <div className="relative h-full flex flex-col">
+            <ResponsiveContainer width="100%" height={200}>
               <PieChart>
                 <Pie
                   data={filteredHelpData}
                   cx="50%"
-                  cy="45%"
+                  cy="50%"
                   outerRadius={75}
                   dataKey="value"
                 >
@@ -608,20 +608,33 @@ const StudentInsights = () => {
                     <Cell key={`cell-${index}`} fill={entry.fill} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(value, name, props) => [`${value}명 (${(props.payload.percent * 100).toFixed(1)}%)`, name]} />
-                <Legend 
-                  verticalAlign="bottom" 
-                  height={50}
-                  formatter={(value) => {
+                <Tooltip 
+                  formatter={(value, name) => {
                     const total = filteredHelpData.reduce((sum, item) => sum + item.value, 0);
-                    const item = filteredHelpData.find(d => d.name === value);
-                    const percent = item && total > 0 ? ((item.value / total) * 100).toFixed(1) : '0.0';
-                    return `${value} (${percent}%)`;
+                    const percent = total > 0 ? ((value / total) * 100).toFixed(1) : '0.0';
+                    return [`${value}명 (${percent}%)`, name];
                   }}
-                  wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }}
                 />
               </PieChart>
             </ResponsiveContainer>
+            {/* 커스텀 범례 */}
+            <div className="flex flex-wrap justify-center gap-3 mt-2 px-2">
+              {filteredHelpData.map((entry, index) => {
+                const total = filteredHelpData.reduce((sum, item) => sum + item.value, 0);
+                const percent = total > 0 ? ((entry.value / total) * 100).toFixed(1) : '0.0';
+                return (
+                  <div key={index} className="flex items-center gap-1.5">
+                    <div 
+                      className="w-3 h-3 rounded-full" 
+                      style={{ backgroundColor: entry.fill }}
+                    />
+                    <span className="text-xs text-gray-800 font-medium">
+                      {entry.name} ({percent}%)
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </InsightCard>
 
@@ -683,7 +696,7 @@ const StudentInsights = () => {
         {/* 6. 고민 상담 & 8. 가장 큰 걱정 */}
         <InsightCard title="고민과 상담" icon={HelpCircle} className="lg:col-span-2">
           <div className="relative h-full flex flex-col md:flex-row gap-8">
-            <div className="flex-1">
+            <div className="flex-1 flex flex-col">
               <h4 className="text-sm font-bold text-gray-500 mb-4 text-center">누구와 상담하나요?</h4>
               <div className="h-[200px]">
                 <ResponsiveContainer width="100%" height="100%">
@@ -695,15 +708,39 @@ const StudentInsights = () => {
                       innerRadius={40}
                       outerRadius={70}
                       dataKey="value"
-                      label={({ name, percent }) => `${name} ${(percent * 100).toFixed(1)}%`}
+                      label={({ name }) => name}
                     >
                       {filteredCounselData.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={entry.fill} />
                       ))}
                     </Pie>
-                    <Tooltip formatter={(value, name, props) => [`${value}명 (${(props.payload.percent * 100).toFixed(1)}%)`, name]} />
+                    <Tooltip 
+                      formatter={(value, name) => {
+                        const total = filteredCounselData.reduce((sum, item) => sum + item.value, 0);
+                        const percent = total > 0 ? ((value / total) * 100).toFixed(1) : '0.0';
+                        return [`${value}명 (${percent}%)`, name];
+                      }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
+              </div>
+              {/* 커스텀 범례 */}
+              <div className="flex flex-wrap justify-center gap-3 mt-3 px-2">
+                {filteredCounselData.map((entry, index) => {
+                  const total = filteredCounselData.reduce((sum, item) => sum + item.value, 0);
+                  const percent = total > 0 ? ((entry.value / total) * 100).toFixed(1) : '0.0';
+                  return (
+                    <div key={index} className="flex items-center gap-1.5">
+                      <div 
+                        className="w-3 h-3 rounded-full" 
+                        style={{ backgroundColor: entry.fill }}
+                      />
+                      <span className="text-xs text-gray-800 font-medium">
+                        {entry.name} ({percent}%)
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className="flex-1 border-t md:border-t-0 md:border-l border-gray-100 pt-4 md:pt-0 md:pl-8">
@@ -732,13 +769,13 @@ const StudentInsights = () => {
 
         {/* 7. 스크린 타임 */}
         <InsightCard title="하루 스크린 타임" icon={Monitor}>
-          <div className="relative h-full">
-            <ResponsiveContainer width="100%" height={250}>
+          <div className="relative h-full flex flex-col">
+            <ResponsiveContainer width="100%" height={200}>
               <PieChart>
                 <Pie
                   data={filteredScreenTimeData}
                   cx="50%"
-                  cy="45%"
+                  cy="50%"
                   outerRadius={75}
                   dataKey="value"
                 >
@@ -746,20 +783,33 @@ const StudentInsights = () => {
                     <Cell key={`cell-${index}`} fill={entry.fill} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(value, name, props) => [`${value}명 (${(props.payload.percent * 100).toFixed(1)}%)`, name]} />
-                <Legend 
-                  verticalAlign="bottom" 
-                  height={50}
-                  formatter={(value) => {
+                <Tooltip 
+                  formatter={(value, name) => {
                     const total = filteredScreenTimeData.reduce((sum, item) => sum + item.value, 0);
-                    const item = filteredScreenTimeData.find(d => d.name === value);
-                    const percent = item && total > 0 ? ((item.value / total) * 100).toFixed(1) : '0.0';
-                    return `${value} (${percent}%)`;
+                    const percent = total > 0 ? ((value / total) * 100).toFixed(1) : '0.0';
+                    return [`${value}명 (${percent}%)`, name];
                   }}
-                  wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }}
                 />
               </PieChart>
             </ResponsiveContainer>
+            {/* 커스텀 범례 */}
+            <div className="flex flex-wrap justify-center gap-3 mt-2 px-2">
+              {filteredScreenTimeData.map((entry, index) => {
+                const total = filteredScreenTimeData.reduce((sum, item) => sum + item.value, 0);
+                const percent = total > 0 ? ((entry.value / total) * 100).toFixed(1) : '0.0';
+                return (
+                  <div key={index} className="flex items-center gap-1.5">
+                    <div 
+                      className="w-3 h-3 rounded-full" 
+                      style={{ backgroundColor: entry.fill }}
+                    />
+                    <span className="text-xs text-gray-800 font-medium">
+                      {entry.name} ({percent}%)
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </InsightCard>
 
