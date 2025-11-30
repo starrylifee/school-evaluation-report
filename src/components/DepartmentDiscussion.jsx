@@ -3,6 +3,29 @@ import { ChevronDown, ChevronUp, CheckCircle2, ListTodo, Megaphone, AlertCircle,
 
 const DEPARTMENTS = [
   {
+    id: 'deptAdmin',
+    name: '행정실',
+    roles: [
+      '학교회계 예산편성 및 결산, 계약 및 집행',
+      '교내 시설물 관리·점검',
+      '물품관리(수급계획, 재물조사, 결산, 불용·폐기 등)'
+    ],
+    agendas: [
+      {
+        title: '2026학년도 학교회계 본예산 편성 추진',
+        description: '12월 중 협의 실시 예정'
+      },
+      {
+        title: '어린이 활동공간 및 교직원 회의실 환경개선 공사',
+        description: '돌봄교실 및 도서관 이동 수업'
+      },
+      {
+        title: '겨울방학 본관동 드라이비트 해소 공사 및 급식실 환기 공사',
+        description: '12월 중 시공사 및 교육청 담당자와 주차 문제 등 협의 예정'
+      }
+    ]
+  },
+  {
     id: 'dept1',
     name: '교무기획부',
     roles: [
